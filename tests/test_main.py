@@ -61,3 +61,8 @@ def test_move_player(monkeypatch):
 
     main.move_player("DOWN")
     assert main.current_location == "Town Square"
+
+def test_print_location(capsys):
+    print_location()
+    captured = capsys.readouterr()
+    assert "You are standing" in captured.out or "You find yourself" in captured.out
