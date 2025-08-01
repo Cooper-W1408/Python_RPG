@@ -96,5 +96,17 @@ def test_generic_event_success(capsys):
     assert "success" in captured.out.lower()
     assert "effect triggered" in captured.out.lower()
 
+def test_generic_event_fail(capsys):
+    def fail_effect():
+        print("Effect Triggered")
+
+    result = generic_event("desc", 100, fail_effect=fail_effect, fail_msg="Failed")
+
+    assert result is True
+
+    captured = capsys.readouterr()
+    assert "Failed" in captured.out.lower()
+    assert "effect triggered" in captured.out.lower()
+
 
 
