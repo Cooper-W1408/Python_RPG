@@ -47,3 +47,17 @@ def test_save_and_load_game(tmp_path):
     save_game(str(filename))
     data = load_game(str(filename))
     assert data is not None 
+
+def test_move_player(monkeypatch):
+    import main
+    main.current_location = "Town Square"
+    main.locations = {
+        "Town Square": {"UP": "Castle Gate"},
+        "Castle Gate": {"DOWN": "Town Square"}
+    }
+
+    main.move_player("UP")
+    assert main.current_location == "Castle Gate"
+
+    main.move_player("DOWN")
+    assert main.current_location == "Town Square"
