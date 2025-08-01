@@ -115,4 +115,8 @@ def test_inventory_add_duplicate():
     inv.add(item)
     assert inv.items.count(item) == 2
 
-
+def test_remove_nonexistant_item():
+    inv = Inventory()
+    item = Item("Potion", "Heals")
+    with pytest.raises(ValueError):
+        inv.remove(item)
