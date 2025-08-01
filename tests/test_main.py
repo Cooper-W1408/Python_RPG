@@ -74,5 +74,14 @@ def test_trigger_event(capsys):
 
     captured = capsys.readouterr()
     assert "city guard" in captured.out.lower() or "guard" in captured.out.lower()
-    
+
+def test_combat(monkeypatch):
+
+    player = Character()
+    enemy = Enemy("Goblin", 10, "desc", 2)
+    monkeypatch.setattr('builtins.input', lambda _: 'attack')
+    combat(player, enemy)
+
+    assert enemy.life <= 0 or player.life <= 0
+
 
