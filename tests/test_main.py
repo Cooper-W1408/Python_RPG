@@ -16,3 +16,9 @@ def test_character_to_dict(monkeypatch):
     monkeypatch.setattr(c, "inventory", Inventory())
     result = c.to_dict()
     assert isinstance(result, dict)
+
+def test_character_from_dict():
+    c = Character()
+    data = {"inventory": []}
+    c.from_dict(data)
+    assert hasattr(c, "inventory")
