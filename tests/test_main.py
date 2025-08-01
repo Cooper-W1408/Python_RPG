@@ -35,4 +35,9 @@ def test_item_initialization():
     item = Item("Potion", "Heals", effect="heal")
     assert item.name == "Potion"
     assert item.effect == "heal"
-    
+
+def test_game_state_to_dict():
+    state = game_state_to_dict()
+    assert "character" in state
+    assert "inventory" in state
+    assert "solved_places" in state
