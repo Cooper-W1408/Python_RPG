@@ -66,3 +66,13 @@ def test_print_location(capsys):
     print_location()
     captured = capsys.readouterr()
     assert "You are standing" in captured.out or "You find yourself" in captured.out
+
+def test_trigger_event(capsys):
+    import main
+
+    main.trigger_event("event_city_guard")
+
+    captured = capsys.readouterr()
+    assert "city guard" in captured.out.lower() or "guard" in captured.out.lower()
+    
+
