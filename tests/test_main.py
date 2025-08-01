@@ -30,3 +30,9 @@ def test_inventory_add_remove():
     assert item in inv.items
     inv.remove(item)
     assert item not in inv.items
+
+def test_item_initialization():
+    item = Item("Potion", "Heals", effect="heal")
+    assert item.name == "Potion"
+    assert item.effect == "heal"
+    
