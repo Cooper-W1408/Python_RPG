@@ -84,4 +84,17 @@ def test_combat(monkeypatch):
 
     assert enemy.life <= 0 or player.life <= 0
 
+def test_generic_event_success(capsys):
+    def success_effect():
+        print("Effect Triggered")
+
+    result = generic_event("desc", 1, success_effect=success_effect, success_msg="Success")
+
+    assert result is True
+
+    captured = capsys.readouterr()
+    assert "success" in captured.out.lower()
+    assert "effect triggered" in captured.out.lower()
+
+
 
