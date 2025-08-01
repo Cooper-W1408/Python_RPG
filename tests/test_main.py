@@ -108,5 +108,11 @@ def test_generic_event_fail(capsys):
     assert "Failed" in captured.out.lower()
     assert "effect triggered" in captured.out.lower()
 
+def test_inventory_add_duplicate():
+    inv = Inventory()
+    item = Item("Key", "Opens Door")
+    inv.add(item)
+    inv.add(item)
+    assert inv.items.count(item) == 2
 
 
