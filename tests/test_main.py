@@ -125,3 +125,7 @@ def test_save_game_permission_error(tmp_path):
     filename = "/root/forbidden_save.json"
     with pytest.raises(PermissionError):
         save_game(filename)
+
+def test_load_game_missing_file():
+    with pytest.raises(FileNotFoundError):
+        load_game("nonexistent_file.json")
