@@ -129,3 +129,8 @@ def test_save_game_permission_error(tmp_path):
 def test_load_game_missing_file():
     with pytest.raises(FileNotFoundError):
         load_game("nonexistent_file.json")
+
+def test_character_equality():
+    c1 = Character()
+    c2 = Character()
+    assert c1 == c2
