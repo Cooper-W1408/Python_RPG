@@ -41,3 +41,9 @@ def test_game_state_to_dict():
     assert "character" in state
     assert "inventory" in state
     assert "solved_places" in state
+
+def test_save_and_load_game(tmp_path):
+    filename = tmp_path / "savegame.json"
+    save_game(str(filename))
+    data = load_game(str(filename))
+    assert data is not None 
