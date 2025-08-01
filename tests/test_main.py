@@ -120,3 +120,8 @@ def test_remove_nonexistant_item():
     item = Item("Potion", "Heals")
     with pytest.raises(ValueError):
         inv.remove(item)
+
+def test_save_game_permission_error(tmp_path):
+    filename = "/root/forbidden_save.json"
+    with pytest.raises(PermissionError):
+        save_game(filename)
