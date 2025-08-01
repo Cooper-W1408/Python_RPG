@@ -22,3 +22,11 @@ def test_character_from_dict():
     data = {"inventory": []}
     c.from_dict(data)
     assert hasattr(c, "inventory")
+
+def test_inventory_add_remove():
+    inv = Inventory()
+    item = Item("Sword", "Potion")
+    inv.add(item)
+    assert item in inv.items
+    inv.remove(item)
+    assert item not in inv.items
